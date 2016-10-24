@@ -96,8 +96,7 @@ var CategoriesComponent = (function () {
                     var proxyProduct = new Northwind_1.Northwind.Product(product);
                     proxyProduct.Sync = undefined;
                     var proxyCategory = new Northwind_1.Northwind.Category({ Id: product.Category.Id });
-                    proxyProduct.Category = proxyCategory;
-                    remoteContext.Categories.attach(proxyCategory, Northwind_1.$data.EntityAttachMode.AllChanged);
+                    proxyProduct.Category = remoteContext.Categories.attachOrGet(proxyCategory);
                     return remoteContext.Products.single("it.Id == " + product.Id).then(function (remoteProduct) {
                         remoteContext.Products.attach(proxyProduct, Northwind_1.$data.EntityAttachMode.AllChanged);
                     }, function () {
