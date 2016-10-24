@@ -57,6 +57,7 @@ export class CategoriesComponent {
                         }, () => {
                             products.forEach(product => {
                                 (<any>product).Sync = now;
+                                product.Category = category;
                                 this.context.Products.add(product);
                             });
                             this.context.Categories.add(category);
